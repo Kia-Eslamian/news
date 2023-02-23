@@ -1,0 +1,53 @@
+body {
+    box-sizing: border-box;
+    background-color: #ffffff;
+    /* background-color:#f2f2f2; */
+    /* background-color: #e0e0e0; */
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
+.d-none {
+    display: none;
+    transition: all .25s ease;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+#logo {
+    color: #000;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#date,
+#weather {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.header-wrapper {
+    border-bottom: 1px solid #e6e6e6;
+}
