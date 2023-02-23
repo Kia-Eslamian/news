@@ -5,6 +5,9 @@ const router = require('express').Router();
 const articleModel = require('../../../../../models/article/article');
 const adminModel = require('../../../../../models/admin/admin');
 
+// modules
+const articleImageUploader = require('../../../../../modules/articleImageUploader');
+
 // sub routers
 const articleCategoryRouter = require('./articleCategory/articleCategory');
 const commentCategoryRouter = require('./comment/comment');
@@ -15,7 +18,7 @@ router.use('/comment', commentCategoryRouter);
 
 
 // create new article
-router.post('/', async (req, res) => {
+router.post('/', articleImageUploader, async (req, res) => {
     try {
 
         const {
