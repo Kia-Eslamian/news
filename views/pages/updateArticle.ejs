@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comments</title>
+    <title>
+        <%= targetArticle.title %>
+    </title>
 
     <!-- fontawesome cdn -->
     <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -22,11 +24,12 @@
         crossorigin="anonymous"></script>
 
     <!-- JQuery cdn -->
+    <!-- <script src="./js/utility/jquery-3.6.3.min.js"></script> -->
     <script src="http://localhost:1000/js/utility/jquery-3.6.3.min.js"></script>
 
     <!-- styles -->
-    <!-- <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="./css/main-styles.css"> -->
+    <link rel="stylesheet" href="http://localhost:1000/css/post.css">
+    <link rel="stylesheet" href="http://localhost:1000/css/main-styles.css">
 </head>
 
 <body>
@@ -63,48 +66,52 @@
         <!-- main -->
         <div class="container">
 
-
-            <!-- comment list -->
+            <!-- new article -->
             <div class="row">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">comment</th>
-                            <th scope="col">operation</th>
-                        </tr>
-                    </thead>
-                    <tbody id="comment_tbody">
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>
-                                <a href="" class="d-inline-block text-truncate" style="max-width: 150px;">article
-                                    title
-                                </a>
-                            </td>
-                            <td>
-                                <a href="" class="d-inline-block text-truncate" style="max-width: 150px;">comment
-                                    description
-                                </a>
-                            </td>
-                            <td class="d-flex flex-row align-items-baseline justify-content-evenly">
-                                <button class="w-100 btn btn-outline-primary me-1">accept</button>
-                                <button class="w-100 btn btn btn-outline-danger">deny</button>
-                            </td>
-                        </tr> -->
-                    </tbody>
+                <h6 class="mt-3">create new article</h6>
+                <form action="" class="mb-3 mt-2">
 
-                </table>
+                    <div class="form-group mt-3">
+                        <label for="titleInput">Title:</label>
+                        <input type="text" class="form-control" id="titleInput" placeholder="title"
+                            value="<%= targetArticle.title%>">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="pageTitleInput">Page Title:</label>
+                        <input type="text" class="form-control" id="pageTitleInput" placeholder="page title"
+                            value="<%= targetArticle.page_title%>">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="summaryInput">Summary:</label>
+                        <input type="text" class="form-control" id="summaryInput" placeholder="summary"
+                            value="<%= targetArticle.summary%>">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="imageInput">Image:</label>
+                        <input type="file" class="form-control" id="imageInput" placeholder="image"
+                            value="<%= targetArticle.image%>">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="descriptionInput">description:</label>
+                        <textarea class="form-control" id="descriptionInput" rows="3"
+                            placeholder="description"><%= targetArticle.description %></textarea>
+                    </div>
+                    <button id="saveBtn" class="btn btn-primary mt-3 mb-2 w-100">Save changes</button>
+                    <a href="http://localhost:1000/api/v1/private/article/remove/<%= targetArticle._id %>"
+                        class="btn btn-danger mt-1 mb-2 w-100">Remove article</a>
+
+
+                </form>
             </div>
-
-
         </div>
-
-
-
     </div>
 
-    <script src="http://localhost:1000/js/comment.js"></script>
+
+    <script src="http://localhost:1000/js/updateArticle.js"></script>
     <!-- <script src="./js/home.js"></script> -->
 </body>
 

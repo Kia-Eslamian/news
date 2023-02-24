@@ -2,7 +2,7 @@ $(document).ready(function () {
     const pathname = window.location.pathname
     const article_id = pathname.split('/')[2];
 
-    /* login */
+
     $('#saveComment').click(function (e) {
         e.preventDefault();
 

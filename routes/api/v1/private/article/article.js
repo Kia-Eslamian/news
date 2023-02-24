@@ -41,7 +41,7 @@ router.post('/', articleImageUploader, async (req, res) => {
         const articleData = {
             title,
             page_title,
-            url,
+            url: title,
             description,
             summary,
             author: admin._id
@@ -67,7 +67,7 @@ router.post('/', articleImageUploader, async (req, res) => {
 });
 
 // delete article
-router.delete('/:article_id', async (req, res) => {
+router.get('/remove/:article_id', async (req, res) => {
     try {
 
         const article = await articleModel.findById(req.params["article_id"]);
@@ -89,7 +89,7 @@ router.delete('/:article_id', async (req, res) => {
 
         await article.save();
 
-        return res.status(200).json({success: true, message});
+        return res.status(200).json({ success: true, message });
 
 
     } catch (error) {
@@ -124,7 +124,7 @@ router.patch('/publish/:article_id', async (req, res) => {
 
         await article.save();
 
-        return res.status(200).json({success: true, message});
+        return res.status(200).json({ success: true, message });
 
 
     } catch (error) {
@@ -150,7 +150,7 @@ router.patch('/:article_id', async (req, res) => {
 
         const result = await articleModel.findByIdAndUpdate(req.params['article_id'], fields);
         if (!result) {
-            return res.status(400).json({success: false, message: "مقاله یافت نشد"});
+            return res.status(400).json({ success: false, message: "مقاله یافت نشد" });
         }
 
         return res.status(200).json({
