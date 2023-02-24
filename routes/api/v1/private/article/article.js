@@ -27,7 +27,8 @@ router.post('/', articleImageUploader, async (req, res) => {
             url,
             description,
             summary,
-            author
+            author,
+            category
         } = req.body;
 
         const admin = await adminModel.findById("63f49351719d540fe10318f6");
@@ -44,7 +45,8 @@ router.post('/', articleImageUploader, async (req, res) => {
             url: title,
             description,
             summary,
-            author: admin._id
+            author: admin._id,
+            category
         };
 
         if (req?.file?.filename) articleData.image = req.file.filename;
