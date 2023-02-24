@@ -6,7 +6,7 @@ const adminSchema = new Schema({
     lastName: { type: String, required: true, index: true },
     email: { type: String, required: true, unique: true, index: true },
     mobile: { type: String, required: true, unique: true, index: true },
-    role: { type: String, enum: ['WRITER', 'MANAGER'], required: true },
+    // role: { type: String, enum: ['WRITER', 'MANAGER'], required: true },
     isActive: { type: Boolean, default: true },
     isDelete: { type: Boolean, default: false },
     password: { type: String, required: true },
