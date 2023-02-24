@@ -3,6 +3,11 @@ const router = require('express').Router();
 const { join } = require('path');
 const ejs = require('ejs');
 
+const banForNotLoggedInUsers = require('../modules/banForNotLoggedInUsers');
+const banForAlreadyLoggedInUsers = require('../modules/banForAlreadyLoggedInUsers');
+
+
+
 // sub routers
 const apiRouter = require('./api/api');
 const express = require("express");
@@ -117,7 +122,7 @@ router.get('/article/:article_id', async (req, res) => {
 });
 
 // comment page
-router.get('/admin/comments', async (req, res) => {
+router.get('/admin/comments', banForNotLoggedInUsers, async (req, res) => {
     try {
 
         return res.render(join(__dirname, '../views/pages/comment.ejs'));
@@ -133,7 +138,7 @@ router.get('/admin/comments', async (req, res) => {
 });
 
 // articles page
-router.get('/admin/articles', async (req, res) => {
+router.get('/admin/articles', banForNotLoggedInUsers, async (req, res) => {
     try {
 
         return res.render(join(__dirname, '../views/pages/article.ejs'));
@@ -149,7 +154,7 @@ router.get('/admin/articles', async (req, res) => {
 });
 
 // update article page
-router.get('/admin/article/update/:article_id', async (req, res) => {
+router.get('/admin/article/update/:article_id', banForNotLoggedInUsers, async (req, res) => {
     try {
 
         const article_id = req.params['article_id'];
@@ -218,6 +223,21 @@ router.get('/admin/article/update/:article_id', async (req, res) => {
 
         return res.render(templatePath, { targetArticle });
 
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+});
+
+// door
+router.get('/door', banForAlreadyLoggedInUsers, async (req, res) => {
+    try {
+
+        return res.render(join(__dirname, '../views/pages/door.ejs'));
 
     } catch (error) {
         console.log(error);

@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         const mobile = req.body['mobile'];
         const password = req.body['password'];
 
-        const admin = await adminModel.findOne({mobile});
+        const admin = await adminModel.findOne({ mobile });
         if (!admin) {
             return res.status(400).json({
                 success: false,
@@ -30,12 +30,6 @@ router.post('/', async (req, res) => {
             });
         }
 
-        if (!admin.isActive) {
-            return res.status(400).json({
-                success: false,
-                message: "این نام کابری غیر فعال می باشد"
-            });
-        }
         if (admin.isDelete) {
             return res.status(400).json({
                 success: false,
@@ -43,19 +37,15 @@ router.post('/', async (req, res) => {
             });
         }
 
-        // const {
-        //     adminSession,
-        //     adminAccessToken
-        // } = await adminRefreshTokenCreator({admin}, req, res);
+        const loggedInAdmin = await adminModel.findByIdAndUpdate(admin._id);
 
+        /* create user session and active that */
+        loggedInAdmin.isActive = true;
+        req.session.admin = loggedInAdmin;
 
         return res.status(200).json({
             success: true,
-            message: "با موفقیت وارد شدید",
-            // data: {
-            //     access_token: adminAccessToken.accessToken,
-            //     refresh_token: adminSession.refreshToken
-            // }
+            message: "logged in"
         });
 
     } catch (error) {
@@ -66,6 +56,5 @@ router.post('/', async (req, res) => {
         });
     }
 });
-
 
 module.exports = router;

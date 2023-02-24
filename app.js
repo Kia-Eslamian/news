@@ -1,6 +1,7 @@
 const express = require('express');
 require('colors');
 const path = require('path');
+const session = require('express-session');
 
 /* env config */
 require('dotenv').config({path: `${__dirname}/.env`});
@@ -26,6 +27,13 @@ require('./database/mongodb');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+/* session */
+app.use(session({
+    secret: process.env.APP_SECRET_AUTH_SESSION,
+    resave: true,
+    saveUninitialized: true,
+    name: "authentication_sess"
+}));
 
 /* main router */
 app.use('/', require('./routes/router'));
