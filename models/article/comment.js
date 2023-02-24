@@ -10,8 +10,7 @@ const commentSchema = new Schema({
     article: {type: Schema.Types.ObjectId, ref: 'article', required: true},
     message: {type: String, required: true},
     email: {type: String, required: true},
-    firstName: {type: String, default: null},
-    lastName: {type: String, default: null},
+    name: {type: String, default: null},
     status: {type: String, default: "PENDING", enum: ["PENDING", "CONFIRMED", "TRASHED"]},
 
 }, {timestamps: true});

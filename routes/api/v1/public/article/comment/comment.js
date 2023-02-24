@@ -31,10 +31,9 @@ router.post('/:article_id', async (req, res) => {
     try {
 
         const article_id = req.params['article_id'];
-        const message = req.params['message'];
-        const email = req.params['email'];
-        const firstName = req.params['firstName'];
-        const lastName = req.params['lastName'];
+        const message = req.body['message'];
+        const email = req.body['email'];
+        const name = req.body['name'];
 
         const article = await articleModel.findById(article_id);
         if (!article) {
@@ -48,8 +47,7 @@ router.post('/:article_id', async (req, res) => {
             article: article._id,
             message,
             email,
-            firstName: firstName ? firstName : 'کاربر',
-            lastName: lastName ? lastName : 'ناشناس',
+            name: name ? name : 'Unknown user'
         });
 
         return res.status(200).json({

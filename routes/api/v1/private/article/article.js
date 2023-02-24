@@ -38,14 +38,19 @@ router.post('/', articleImageUploader, async (req, res) => {
             });
         }
 
-        await articleModel.create({
+        const articleData = {
             title,
             page_title,
             url,
             description,
             summary,
             author: admin._id
-        });
+        };
+
+        if (req?.file?.filename) articleData.image = req.file.filename;
+
+
+        await articleModel.create(articleData);
 
         return res.status(200).json({
             success: true,

@@ -32,7 +32,7 @@ const fileFilter = (req, file, cb) => {
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const saveAsPath = config.path.static.public.bankImage;
+        const saveAsPath = config.path.articleImage;
         // mkdirp.sync(saveAsPath, 0o700);
         mkdirp.sync(saveAsPath);
         return cb(null, saveAsPath)

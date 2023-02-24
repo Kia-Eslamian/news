@@ -12,7 +12,7 @@ const articleSchema = new Schema({
     description: {type: String, required: true},
     summary: {type: String, required: true},
     image: {type: String, default: null},
-    poster: {type: String, default: null},
+    // poster: {type: String, default: null},
     author: {type: Schema.Types.ObjectId, ref: 'admin', required: true},
     categories: {type: [Schema.Types.ObjectId], ref: 'articleCategory', default: []},
     likes: {type: Number, default: 0},
