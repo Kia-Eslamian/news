@@ -30,11 +30,11 @@ router.post('/', articleImageUploader, async (req, res) => {
             author
         } = req.body;
 
-        const admin = await adminModel.findById(author);
+        const admin = await adminModel.findById("63f49351719d540fe10318f6");
         if (!admin) {
             return res.status(400).json({
                 success: false,
-                message: "ادمین یافت نشد"
+                message: "admin not found"
             });
         }
 
@@ -54,7 +54,7 @@ router.post('/', articleImageUploader, async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "مقاله ساخته شد"
+            message: "article created"
         });
 
     } catch (error) {
@@ -74,17 +74,17 @@ router.get('/remove/:article_id', async (req, res) => {
         if (!article) {
             return res.status(400).json({
                 success: false,
-                message: "مقاله یافت نشد"
+                message: "article not found"
             });
         }
 
         let message;
         if (article.isDelete === true) {
             article.isDelete = false;
-            message = "مقاله حذف شد";
+            message = "article removed";
         } else {
             article.isDelete = true;
-            message = "مقاله بازگردانده شد";
+            message = "article restored";
         }
 
         await article.save();
