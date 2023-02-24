@@ -1,5 +1,12 @@
 $(document).ready(function () {
+
     getArticleList();
+
+    $('#saveBtn').click(function (e) {
+        e.preventDefault();
+
+        createNewArticle();
+    });
 });
 
 function getArticleList() {
@@ -44,3 +51,35 @@ function trGenerator({ article_id, articleTitle, index }) {
     `;
 }
 
+function createNewArticle() {
+
+    const title = $('#titleInput').val();
+    const page_title = $('#pageTitleInput').val();
+    const summary = $('#summaryInput').val();
+    const image = $('#imageInput').val();
+    const description = $('#descriptionInput').val();
+
+    const data = {
+        title,
+        page_title,
+        // url,
+        description,
+        summary,
+        image
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:1000/api/v1/private/article",
+        data,
+        success: function (response) {
+            if (response.success === true) {
+                location.reload();
+            }
+        },
+        error: function (error) {
+            alert("error");
+            console.log(error)
+        }
+    });
+};
