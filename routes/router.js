@@ -39,36 +39,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// author page
-router.get('/author', async (req, res) => {
-    try {
-
-        return res.render(join(__dirname, '../views/pages/author.ejs'));
-
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        });
-    }
-});
-
-// article page
-// router.get('/article', async (req, res) => {
-//     try {
-//
-//         return res.render(join(__dirname, '../views/pages/post.ejs'));
-//
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({
-//             success: false,
-//             message: "Internal server error"
-//         });
-//     }
-// });
-
 // post page
 router.get('/article/:article_id', async (req, res) => {
     try {
