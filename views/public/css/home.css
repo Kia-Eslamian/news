@@ -52,6 +52,13 @@ li {
     border-radius: 5px;
 }
 
+.navbar-wrapper ul li button {
+    border: none;
+    outline: none;
+    background: none;
+    background-color: none;
+}
+
 .navbar-wrapper ul li:hover {
     background-color: #eee;
 }
