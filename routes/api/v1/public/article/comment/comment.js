@@ -43,12 +43,17 @@ router.post('/:article_id', async (req, res) => {
             });
         }
 
-        await commentModel.create({
+        const comment = await commentModel.create({
             article: article._id,
             message,
             email,
-            name: name ? name : 'Unknown user'
+            name: name ? name : 'Unknown user',
+            status: "CONFIRMED"
         });
+
+
+        await articleModel.findByIdAndUpdate(article._id, {$push: {comments: comment._id}});
+
 
         return res.status(200).json({
             success: true,

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        <%= targetArticle.title %>
+    </title>
 
     <!-- fontawesome cdn -->
     <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -22,11 +24,12 @@
         crossorigin="anonymous"></script>
 
     <!-- JQuery cdn -->
-    <script src="./js/utility/jquery-3.6.3.min.js"></script>
+    <!-- <script src="./js/utility/jquery-3.6.3.min.js"></script> -->
+    <script src="http://localhost:1000/js/utility/jquery-3.6.3.min.js"></script>
 
     <!-- styles -->
-    <link rel="stylesheet" href="./css/post.css">
-    <link rel="stylesheet" href="./css/main-styles.css">
+    <link rel="stylesheet" href="http://localhost:1000/css/post.css">
+    <link rel="stylesheet" href="http://localhost:1000/css/main-styles.css">
 </head>
 
 <body>
@@ -53,109 +56,55 @@
         <main class="row main-wrapper">
 
             <div class="poster-wrapper text-center img-responsive">
-                <img src="./img/22ai-notebook-01-jcvm-threeByTwoSmallAt2X.webp" alt="ddd">
+                <img src="http://localhost:1000/serve/<%= targetArticle.image %>" alt="article_image">
             </div>
 
             <div class="title-wrapper">
-                <h6>Title of article in lading page</h6>
+                <h6>
+                    <%= targetArticle.title %>
+                </h6>
             </div>
 
             <div class="description-wrapper">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, voluptate soluta? At, ipsum
-                    impedit
-                    necessitatibus rerum sunt earum quos non exercitationem quis distinctio voluptatem consequatur illo
-                    sit
-                    quibusdam amet possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam libero
-                    assumenda
-                    neque dicta fugiat pariatur sunt odit aliquid atque numquam iste aliquam sit eum quasi cumque quas,
-                    temporibus impedit asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, iusto
-                    assumenda. Explicabo consectetur placeat quo eaque reprehenderit sunt, dolores architecto quod
-                    laborum,
-                    porro ipsum, nulla dolor incidunt provident voluptatum repudiandae. Lorem, ipsum dolor sit amet
-                    consectetur adipisicing elit. Repudiandae tempora a cumque minima. Animi sed consequuntur impedit
-                    harum
-                    omnis culpa ullam molestiae autem quas labore provident, sequi esse ab debitis! Lorem ipsum dolor
-                    sit
-                    amet consectetur adipisicing elit. Esse ab, blanditiis, cumque dolore vel fuga aspernatur fugiat eos
-                    harum nam praesentium maiores reiciendis deleniti ratione laborum numquam. Adipisci, fuga
-                    voluptatum.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, voluptate soluta? At, ipsum
-                    impedit
-                    necessitatibus rerum sunt earum quos non exercitationem quis distinctio voluptatem consequatur illo
-                    sit
-                    quibusdam amet possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam libero
-                    assumenda
-                    neque dicta fugiat pariatur sunt odit aliquid atque numquam iste aliquam sit eum quasi cumque quas,
-                    temporibus impedit asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, iusto
-                    assumenda. Explicabo consectetur placeat quo eaque reprehenderit sunt, dolores architecto quod
-                    laborum,
-                    porro ipsum, nulla dolor incidunt provident voluptatum repudiandae. Lorem, ipsum dolor sit amet
-                    consectetur adipisicing elit. Repudiandae tempora a cumque minima. Animi sed consequuntur impedit
-                    harum
-                    omnis culpa ullam molestiae autem quas labore provident, sequi esse ab debitis! Lorem ipsum dolor
-                    sit
-                    amet consectetur adipisicing elit. Esse ab, blanditiis, cumque dolore vel fuga aspernatur fugiat eos
-                    harum nam praesentium maiores reiciendis deleniti ratione laborum numquam. Adipisci, fuga
-                    voluptatum.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, voluptate soluta? At, ipsum
-                    impedit
-                    necessitatibus rerum sunt earum quos non exercitationem quis distinctio voluptatem consequatur illo
-                    sit
-                    quibusdam amet possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam libero
-                    assumenda
-                    neque dicta fugiat pariatur sunt odit aliquid atque numquam iste aliquam sit eum quasi cumque quas,
-                    temporibus impedit asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, iusto
-                    assumenda. Explicabo consectetur placeat quo eaque reprehenderit sunt, dolores architecto quod
-                    laborum,
-                    porro ipsum, nulla dolor incidunt provident voluptatum repudiandae. Lorem, ipsum dolor sit amet
-                    consectetur adipisicing elit. Repudiandae tempora a cumque minima. Animi sed consequuntur impedit
-                    harum
-                    omnis culpa ullam molestiae autem quas labore provident, sequi esse ab debitis! Lorem ipsum dolor
-                    sit
-                    amet consectetur adipisicing elit. Esse ab, blanditiis, cumque dolore vel fuga aspernatur fugiat eos
-                    harum nam praesentium maiores reiciendis deleniti ratione laborum numquam. Adipisci, fuga
-                    voluptatum.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, voluptate soluta? At, ipsum
-                    impedit
-                    necessitatibus rerum sunt earum quos non exercitationem quis distinctio voluptatem consequatur illo
-                    sit
-                    quibusdam amet possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam libero
-                    assumenda
-                    neque dicta fugiat pariatur sunt odit aliquid atque numquam iste aliquam sit eum quasi cumque quas,
-                    temporibus impedit asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, iusto
-                    assumenda. Explicabo consectetur placeat quo eaque reprehenderit sunt, dolores architecto quod
-                    laborum,
-                    porro ipsum, nulla dolor incidunt provident voluptatum repudiandae. Lorem, ipsum dolor sit amet
-                    consectetur adipisicing elit. Repudiandae tempora a cumque minima. Animi sed consequuntur impedit
-                    harum
-                    omnis culpa ullam molestiae autem quas labore provident, sequi esse ab debitis! Lorem ipsum dolor
-                    sit
-                    amet consectetur adipisicing elit. Esse ab, blanditiis, cumque dolore vel fuga aspernatur fugiat eos
-                    harum nam praesentium maiores reiciendis deleniti ratione laborum numquam. Adipisci, fuga
-                    voluptatum.
+                <p>
+                    <%= targetArticle.summary %>
+                </p>
+                <p>
+                    <%= targetArticle.description %>
                 </p>
             </div>
 
             <div class="info-wrapper">
 
-                <p class="writerName">Kia Eslamian</p>
-                <p class="date">Thursday, February 23, 2023</p>
+                <p class="writerName">
+                    <%= targetArticle.author.firstName %>
+                        <%= targetArticle.author.lastName %>
+                </p>
+                <p class="date">
+                    <%= targetArticle.createdAt %>
+                </p>
 
             </div>
 
             <div class="newComment-wrapper">
-                <input type="text" placeholder="name">
-                <input type="text" placeholder="email">
-                <textarea placeholder="comment" name="" id="" cols="10" rows="2"></textarea>
+                <input type="text" placeholder="name" id="nameInput">
+                <input type="text" placeholder="email" id="emailInput">
+                <textarea placeholder="comment" name="" id="messageInput" cols="10" rows="2"></textarea>
                 <button id="saveComment">save</button>
             </div>
 
-            <div class="comments-wrapper">
+            <div class="comments-wrapper container">
 
-                <p>Kia Eslamian said:</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, ab expedita provident ratione
-                    veritatis sapiente cupiditate. Fugit nostrum voluptatibus nihil officiis rerum. Eligendi repellendus
-                    consequatur, sed molestiae optio et aliquam?</p>
+                <% for( let index=0; index < targetArticle.comments.length; index++ ) { %>
+                    <p>
+                        <b>
+                            <%= targetArticle.comments[index].name %>
+                        </b> said:
+                    </p>
+                    <p>
+                        <%= targetArticle.comments[index].message %>
+                    </p>
+                    <% } %>
 
             </div>
 
@@ -163,7 +112,8 @@
 
     </div>
 
-    <!-- <script src="./js/home.js"></script> -->
+    <script src="http://localhost:1000/js/post.js"></script>
+    <!-- <script src="./js/post.js"></script> -->
 </body>
 
 </html>
