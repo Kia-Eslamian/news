@@ -12,21 +12,23 @@ $(document).ready(function () {
 
 function updateArticle(article_id) {
 
-    const url = `http://localhost:1000/api/v1/private/article/${article_id}`
+    const url = `http://localhost:1000/api/v1/private/article/${article_id}`;
 
-    const titleInput = $('#titleInput').val();
-    const pageTitleInput = $('#pageTitleInput').val();
-    const summaryInput = $('#summaryInput').val();
-    const imageInput = $('#imageInput').val();
-    const descriptionInput = $('#imageInput').val();
+    const title = $('#titleInput').val();
+    const page_title = $('#pageTitleInput').val();
+    const summary = $('#summaryInput').val();
+    const image = $('#imageInput').val();
+    const description = $('#descriptionInput').val();
 
+
+console.log(descriptionInput)
     const data = {}
 
-    if (titleInput) data.title = titleInput;
-    if (pageTitleInput) data.page_title = pageTitleInput;
-    if (summaryInput) data.url = summaryInput;
-    if (imageInput) data.description = imageInput;
-    if (descriptionInput) data.summary = descriptionInput;
+    if (title) data.title = title;
+    if (page_title) data.page_title = page_title;
+    if (summary) data.summary = summary;
+    if (image) data.image = image;
+    if (description) data.description = description;
 
     $.ajax({
         type: "PATCH",
@@ -34,7 +36,7 @@ function updateArticle(article_id) {
         data,
         success: function (response) {
             if (response.success === true) {
-                location.reload();
+                // location.reload();
             }
         },
         error: function (error) {

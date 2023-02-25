@@ -20,6 +20,7 @@ function getCommentList() {
                         article_id: comment.article._id,
                         commentDescription: comment.message,
                         comment_id: comment._id,
+                        status: comment.status
                     }));
 
                 }
@@ -34,7 +35,7 @@ function getCommentList() {
 }
 
 
-function trGenerator({ commentDescription,comment_id, article_id, index }) {
+function trGenerator({ commentDescription, comment_id, article_id, index, status }) {
 
     // console.log(onClickHandler);
     return `
@@ -42,8 +43,13 @@ function trGenerator({ commentDescription,comment_id, article_id, index }) {
     <tr>
                             <th scope="row">${index}</th>
                             <td>
-                                <p class="text-decoration-none d-inline-block text-truncate" style="max-width: 250px;">comment
+                                <p class="text-decoration-none d-inline-block text-truncate" style="max-width: 250px;">
                                     ${commentDescription}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="text-decoration-none d-inline-block text-truncate" style="max-width: 250px;">
+                                    ${status}
                                 </p>
                             </td>
                             <td class="d-flex flex-row align-items-baseline justify-content-evenly">

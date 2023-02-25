@@ -12,18 +12,20 @@ $(document).ready(function () {
 function getArticleList() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:1000/api/v1/public/article",
+        url: "http://localhost:1000/api/v1/private/article",
         success: function (response) {
             if (response.success === true) {
                 const articleList = response.data.result;
 
                 for (let index = 0; index < articleList.length; index++) {
-                    const article = articleList[index];
+                    const article = articleList[index]; 3
+                    
 
                     $('#articleTbody').append(trGenerator({
                         articleTitle: article.title,
                         article_id: article._id,
                         index: index + 1,
+                        status: article.isDelete ? "DELETED" : "ACTIVE"
                     }));
 
                 }
@@ -37,11 +39,12 @@ function getArticleList() {
     });
 }
 
-function trGenerator({ article_id, articleTitle, index }) {
+function trGenerator({ article_id, articleTitle, index, status }) {
     return `
     <tr>
         <th scope="row">${index}</th>
         <td >${articleTitle}</td>
+        <td >${status}</td>
         <td class="d-flex flex-row align-items-baseline justify-content-evenly">
             <a class="w-100 btn btn-outline-primary me-1" href="http://localhost:1000/admin/article/update/${article_id}">edit</a>
             <a class="w-100 btn btn btn-outline-secondary" href="http://localhost:1000/article/${article_id}">show</a>

@@ -8,7 +8,7 @@ module.exports = async function (req, res, next) {
         //     success: false,
         //     message: "already logged in"
         // });
-        return res.redirect('http://localhost:5000/home');
+        return res.redirect('http://localhost:1000/admin/articles');
     }
 
 

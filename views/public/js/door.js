@@ -19,22 +19,26 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            type: "POST",
+            type: "post",
             url: "http://localhost:1000/api/v1/public/auth",
             data: {
                 mobile, password
             },
-            dataType: "dataType",
             success: function (response) {
+    
                 if (response.success) {
-
-                    // $('#alertWrapper').append(alertBox(alertId, 'success', 'successful', response.message));
+    
                     window.location.replace('http://localhost:1000/admin/articles');
-
+    
+                } else if (!response.success) {
+                    console.log("error => ", error.responseText);
+                    alert(error.responseText);
                 }
+    
             },
             error: function (error) {
-                console.log("error => ",error);
+                console.log("error => ", error.responseText);
+                alert(error.responseText);
             }
         });
 

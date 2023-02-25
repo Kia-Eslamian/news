@@ -11,11 +11,11 @@ router.get('/', async (req, res) => {
     try {
 
         const comments = await commentModel.aggregate([
-            {
-                '$match':{
-                    status:{$ne:'TRASHED'}
-                }
-            },
+            // {
+            //     '$match':{
+            //         status:{$ne:'TRASHED'}
+            //     }
+            // },
             {
                 '$lookup': {
                     'from': 'articles',

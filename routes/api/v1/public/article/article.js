@@ -27,7 +27,10 @@ router.get('/', async (req, res) => {
             if (category) {
                 aggregationPipeline.push(
                     {
-                        '$match': { category: category._id }
+                        '$match': {
+                            category: category._id,
+                            isDelete: false
+                        }
                     },
                     {
                         '$lookup': {
@@ -77,7 +80,9 @@ router.get('/', async (req, res) => {
         } else {
             aggregationPipeline.push(
                 {
-                    '$match': {}
+                    '$match': {
+                        isDelete: false
+                    }
                 },
                 {
                     '$lookup': {
