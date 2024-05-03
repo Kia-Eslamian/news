@@ -6,11 +6,38 @@ const bcrypt = require("bcryptjs");
 const adminModel = require('../../../../../../models/admin/admin');
 
 
+(async () => {
+    try {
+
+        const isManagerExists = await adminModel.findOne({ firstName: 'admin', lastName: 'admin', email: 'admin@gmail.com' });
+        if (!isManagerExists) {
+
+            const salt = await bcrypt.genSalt();
+            const hashedPassword = await bcrypt.hash('admin', salt);
+
+            await adminModel.create({
+                firstName: 'admin',
+                lastName: 'admin',
+                email: 'admin@gmail.com',
+                mobile: '0921',
+                password: hashedPassword
+            });
+
+            console.log('default admin created');
+        }
+
+    } catch (error) {
+        console.log('error in creating default manager -> ', error);
+    }
+})();
+
+
+
 // create admin with manager role
 router.post('/create-manager', async (req, res) => {
     try {
 
-        const {firstName, lastName, email, mobile, password} = req.body;
+        const { firstName, lastName, email, mobile, password } = req.body;
 
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -43,7 +70,7 @@ router.post('/create-manager', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
 
-        const {firstName, lastName, email, mobile, password} = req.body;
+        const { firstName, lastName, email, mobile, password } = req.body;
 
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -81,12 +108,12 @@ router.get('/', async (req, res) => {
         const matchData = {};
         if (role) matchData.role = role;
 
-        const admins = await adminModel.find(matchData).select({password: 0});
+        const admins = await adminModel.find(matchData).select({ password: 0 });
 
 
         return res.status(200).json({
             success: true,
-            data: {result: admins}
+            data: { result: admins }
         });
 
 
@@ -105,7 +132,7 @@ router.get('/:admin_id', async (req, res) => {
 
         const admin_id = req.params['admin_id'];
 
-        const admin = await adminModel.findById(admin_id).select({password: 0});
+        const admin = await adminModel.findById(admin_id).select({ password: 0 });
         if (!admin) {
             return res.status(400).json({
                 success: false,
@@ -115,7 +142,7 @@ router.get('/:admin_id', async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            data: {result: admin}
+            data: { result: admin }
         });
 
 
@@ -154,7 +181,7 @@ router.patch('/:admin_id', async (req, res) => {
         const mongoValidationErrors = [];
 
         if (fields.mobile) {
-            const duplicatedUrl = await adminModel.findOne({mobile});
+            const duplicatedUrl = await adminModel.findOne({ mobile });
             if (duplicatedUrl) {
                 mongoValidationErrors.push(
                     {
@@ -168,7 +195,7 @@ router.patch('/:admin_id', async (req, res) => {
         }
 
         if (fields.email) {
-            const duplicatedUrl = await adminModel.findOne({email});
+            const duplicatedUrl = await adminModel.findOne({ email });
             if (duplicatedUrl) {
                 mongoValidationErrors.push(
                     {
@@ -223,7 +250,7 @@ router.patch('/activation/:admin_id', async (req, res) => {
         }
 
         if (activeStatus !== admin.isActive) {
-            await adminModel.findByIdAndUpdate(admin._id, {isActive: activeStatus});
+            await adminModel.findByIdAndUpdate(admin._id, { isActive: activeStatus });
         }
 
         let message;
@@ -264,7 +291,7 @@ router.delete('/:admin_id', async (req, res) => {
         }
 
         if (deleteStatus !== admin.isDeleted) {
-            await adminModel.findByIdAndUpdate(admin._id, {isDeleted: deleteStatus});
+            await adminModel.findByIdAndUpdate(admin._id, { isDeleted: deleteStatus });
         }
 
         let message;

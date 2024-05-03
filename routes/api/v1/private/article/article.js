@@ -31,7 +31,7 @@ router.post('/', articleImageUploader, async (req, res) => {
             category
         } = req.body;
 
-        const admin = await adminModel.findById("63f49351719d540fe10318f6");
+        const admin = await adminModel.findOne({ email: 'admin@gmail.com' });
         if (!admin) {
             return res.status(400).json({
                 success: false,
@@ -213,24 +213,24 @@ router.get('/', async (req, res) => {
                         'foreignField': '_id',
                         'as': 'comments'
                     }
-                }, 
-                // {
-                //     '$project': {
-                //         'title': 1,
-                //         'page_title': 1,
-                //         'url': 1,
-                //         'description': 1,
-                //         'summary': 1,
-                //         'image': 1,
-                //         'author.firstName': 1,
-                //         'author.lastName': 1,
-                //         'categories.title': 1,
-                //         'comments': 1,
-                //         'createdAt': 1,
-                //         'updatedAt': 1,
-                //         'isDeleted': 1
-                //     }
-                // }
+                },
+                    // {
+                    //     '$project': {
+                    //         'title': 1,
+                    //         'page_title': 1,
+                    //         'url': 1,
+                    //         'description': 1,
+                    //         'summary': 1,
+                    //         'image': 1,
+                    //         'author.firstName': 1,
+                    //         'author.lastName': 1,
+                    //         'categories.title': 1,
+                    //         'comments': 1,
+                    //         'createdAt': 1,
+                    //         'updatedAt': 1,
+                    //         'isDeleted': 1
+                    //     }
+                    // }
                 );
             }
 
@@ -268,23 +268,23 @@ router.get('/', async (req, res) => {
                     'as': 'comments'
                 }
             },
-            //  {
-            //     '$project': {
-            //         'title': 1,
-            //         'page_title': 1,
-            //         'url': 1,
-            //         'description': 1,
-            //         'summary': 1,
-            //         'image': 1,
-            //         'author.firstName': 1,
-            //         'author.lastName': 1,
-            //         'categories.title': 1,
-            //         'comments': 1,
-            //         'createdAt': 1,
-            //         'updatedAt': 1,
-            //         'isDeleted': 1
-            //     }
-            // }
+                //  {
+                //     '$project': {
+                //         'title': 1,
+                //         'page_title': 1,
+                //         'url': 1,
+                //         'description': 1,
+                //         'summary': 1,
+                //         'image': 1,
+                //         'author.firstName': 1,
+                //         'author.lastName': 1,
+                //         'categories.title': 1,
+                //         'comments': 1,
+                //         'createdAt': 1,
+                //         'updatedAt': 1,
+                //         'isDeleted': 1
+                //     }
+                // }
             );
         }
 
