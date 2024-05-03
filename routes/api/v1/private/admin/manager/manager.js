@@ -9,7 +9,7 @@ const adminModel = require('../../../../../../models/admin/admin');
 (async () => {
     try {
 
-        const isManagerExists = await adminModel.findOne({ firstName: 'admin', lastName: 'admin', email: 'admin@gmail.com' });
+        const isManagerExists = await adminModel.findOne({ email: 'admin@gmail.com' });
         if (!isManagerExists) {
 
             const salt = await bcrypt.genSalt();
